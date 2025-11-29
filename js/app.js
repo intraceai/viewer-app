@@ -13,7 +13,13 @@ const api = {
             headers: { 'Content-Type': 'application/json' }
         });
         if (!response.ok) throw new Error('Failed to create session');
-        return response.json();
+        const data = await response.json();
+        // Normalize snake_case to camelCase
+        return {
+            sessionId: data.session_id,
+            streamUrl: data.stream_url,
+            expiresAt: data.expires_at
+        };
     },
 
     async deleteSession(sessionId) {
@@ -30,6 +36,22 @@ const api = {
             body: JSON.stringify({ url })
         });
         if (!response.ok) throw new Error('Failed to open URL');
+        return response.json();
+    },
+
+    async startStream(sessionId) {
+        const response = await fetch(`${API_BASE}/sessions/${sessionId}/start-stream`, {
+            method: 'POST'
+        });
+        if (!response.ok) throw new Error('Failed to start stream');
+        return response.json();
+    },
+
+    async stopStream(sessionId) {
+        const response = await fetch(`${API_BASE}/sessions/${sessionId}/stop-stream`, {
+            method: 'POST'
+        });
+        if (!response.ok) throw new Error('Failed to stop stream');
         return response.json();
     },
 
