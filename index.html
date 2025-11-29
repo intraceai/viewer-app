@@ -3,64 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intrace - Verifiable Web Captures</title>
+    <title>Intrace Capture</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Intrace</h1>
-            <p class="tagline">Verifiable Web Captures</p>
+            <h1>
+                <a href="/">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Intrace
+                </a>
+            </h1>
+            <nav>
+                <a href="/">Capture</a>
+            </nav>
         </div>
     </header>
 
     <main class="container">
-        <section id="capture-form" class="card">
-            <h2>Create a Capture</h2>
+        <section id="capture-form" class="section">
             <form id="url-form">
                 <div class="form-group">
-                    <label for="url-input">Enter URL to capture</label>
-                    <input type="text" id="url-input" placeholder="https://example.com" required>
+                    <label for="url-input">URL</label>
+                    <div class="input-group">
+                        <input type="url" id="url-input" placeholder="https://example.com" required>
+                        <button type="submit" id="start-btn" class="btn btn-primary">Capture</button>
+                    </div>
                 </div>
-                <button type="submit" id="start-btn" class="btn btn-primary">Start Capture Session</button>
             </form>
         </section>
 
-        <section id="session-container" class="card hidden">
-            <h2>Interactive Browser Session</h2>
+        <section id="session-container" class="section hidden">
             <div class="session-info">
-                <span id="session-timer"></span>
-                <button id="end-session-btn" class="btn btn-secondary">End Session</button>
+                <span id="session-timer">00:00</span>
+                <div class="session-actions">
+                    <button id="capture-btn" class="btn btn-primary btn-sm">Capture</button>
+                    <button id="end-session-btn" class="btn btn-secondary btn-sm">End</button>
+                </div>
             </div>
             <div id="browser-container">
                 <canvas id="browser-canvas" width="1280" height="720"></canvas>
                 <div id="connection-status">Connecting...</div>
             </div>
-            <div class="capture-controls">
-                <button id="capture-btn" class="btn btn-primary">Capture Full Page</button>
-            </div>
         </section>
 
-        <section id="result-container" class="card hidden">
-            <h2>Capture Complete</h2>
-            <div id="capture-result">
-                <p>Your capture has been created and added to the verifiable event chain.</p>
+        <section id="result-container" class="section hidden">
+            <div class="result-card">
+                <svg class="result-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <h3 class="result-title">Capture Complete</h3>
+                <p class="result-description">Your capture has been added to the verifiable event chain.</p>
                 <a id="view-capture-link" href="#" class="btn btn-primary">View Capture</a>
             </div>
         </section>
 
-        <section id="recent-captures" class="card">
+        <section id="recent-captures" class="section">
             <h2>Recent Captures</h2>
             <div id="captures-list">
-                <p class="loading">Loading recent captures...</p>
+                <p class="loading">Loading...</p>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>Intrace - Open source verifiable web capture system</p>
-            <p><a href="https://github.com/intraceai">GitHub</a></p>
+            <a href="https://github.com/intraceai">GitHub</a>
         </div>
     </footer>
 

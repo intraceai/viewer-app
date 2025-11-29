@@ -9,14 +9,25 @@
 <body>
     <header>
         <div class="container">
-            <h1><a href="/">Intrace</a></h1>
-            <p class="tagline">Verifiable Web Captures</p>
+            <h1>
+                <a href="/">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Intrace
+                </a>
+            </h1>
+            <nav>
+                <a href="/">Capture</a>
+            </nav>
         </div>
     </header>
 
     <main class="container">
-        <section id="capture-view" class="card">
-            <div id="loading" class="loading">Loading capture...</div>
+        <section id="capture-view">
+            <div id="loading" class="loading">Loading...</div>
 
             <div id="capture-content" class="hidden">
                 <div class="capture-header">
@@ -63,22 +74,22 @@
                         <h3>Cryptographic Hashes</h3>
                         <table class="info-table">
                             <tr>
-                                <td>Screenshot SHA-256</td>
+                                <td>Screenshot</td>
                                 <td id="hash-screenshot" class="mono"></td>
                             </tr>
                             <tr>
-                                <td>DOM SHA-256</td>
+                                <td>DOM</td>
                                 <td id="hash-dom" class="mono"></td>
                             </tr>
                             <tr>
-                                <td>Manifest SHA-256</td>
+                                <td>Manifest</td>
                                 <td id="hash-manifest" class="mono"></td>
                             </tr>
                         </table>
                     </div>
 
                     <div class="detail-section">
-                        <h3>Event Chain Proof</h3>
+                        <h3>Event Chain</h3>
                         <table class="info-table">
                             <tr>
                                 <td>Event ID</td>
@@ -89,11 +100,11 @@
                                 <td id="event-hash" class="mono"></td>
                             </tr>
                             <tr>
-                                <td>Previous Event Hash</td>
+                                <td>Previous Hash</td>
                                 <td id="prev-hash" class="mono"></td>
                             </tr>
                             <tr>
-                                <td>Operator Key ID</td>
+                                <td>Operator Key</td>
                                 <td id="operator-key" class="mono"></td>
                             </tr>
                             <tr>
@@ -109,20 +120,20 @@
                             <span class="status-icon"></span>
                             <span class="status-text">Verifying...</span>
                         </div>
-                        <button id="verify-btn" class="btn btn-secondary">Re-verify Integrity</button>
+                        <button id="verify-btn" class="btn btn-secondary btn-sm">Re-verify</button>
                     </div>
                 </div>
 
                 <div class="actions">
-                    <a id="download-bundle" href="#" class="btn btn-primary">Download Evidence Bundle</a>
+                    <a id="download-bundle" href="#" class="btn btn-primary">Download Bundle</a>
                     <a id="view-dom" href="#" class="btn btn-secondary" target="_blank">View DOM</a>
                     <a id="view-manifest" href="#" class="btn btn-secondary" target="_blank">View Manifest</a>
                 </div>
             </div>
 
-            <div id="error" class="hidden">
-                <h2>Capture Not Found</h2>
-                <p>The requested capture could not be found.</p>
+            <div id="error" class="hidden" style="text-align: center; padding: 3rem 0;">
+                <h3 style="margin-bottom: 0.5rem;">Capture Not Found</h3>
+                <p class="meta" style="margin-bottom: 1rem;">The requested capture could not be found.</p>
                 <a href="/" class="btn btn-primary">Go Home</a>
             </div>
         </section>
@@ -130,8 +141,7 @@
 
     <footer>
         <div class="container">
-            <p>Intrace - Open source verifiable web capture system</p>
-            <p><a href="https://github.com/intraceai">GitHub</a></p>
+            <a href="https://github.com/intraceai">GitHub</a>
         </div>
     </footer>
 
