@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrace - Verifiable Web Captures</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Intrace</h1>
+            <p class="tagline">Verifiable Web Captures</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="capture-form" class="card">
+            <h2>Create a Capture</h2>
+            <form id="url-form">
+                <div class="form-group">
+                    <label for="url-input">Enter URL to capture</label>
+                    <input type="text" id="url-input" placeholder="https://example.com" required>
+                </div>
+                <button type="submit" id="start-btn" class="btn btn-primary">Start Capture Session</button>
+            </form>
+        </section>
+
+        <section id="session-container" class="card hidden">
+            <h2>Interactive Browser Session</h2>
+            <div class="session-info">
+                <span id="session-timer"></span>
+                <button id="end-session-btn" class="btn btn-secondary">End Session</button>
+            </div>
+            <div id="vnc-container">
+                <iframe id="vnc-frame" src=""></iframe>
+            </div>
+            <div class="capture-controls">
+                <button id="capture-btn" class="btn btn-primary">Capture Full Page</button>
+            </div>
+        </section>
+
+        <section id="result-container" class="card hidden">
+            <h2>Capture Complete</h2>
+            <div id="capture-result">
+                <p>Your capture has been created and added to the verifiable event chain.</p>
+                <a id="view-capture-link" href="#" class="btn btn-primary">View Capture</a>
+            </div>
+        </section>
+
+        <section id="recent-captures" class="card">
+            <h2>Recent Captures</h2>
+            <div id="captures-list">
+                <p class="loading">Loading recent captures...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Intrace - Open source verifiable web capture system</p>
+            <p><a href="https://github.com/intraceai">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/session.js"></script>
+</body>
+</html>

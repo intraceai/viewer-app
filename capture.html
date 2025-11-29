@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture - Intrace</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">Intrace</a></h1>
+            <p class="tagline">Verifiable Web Captures</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="capture-view" class="card">
+            <div id="loading" class="loading">Loading capture...</div>
+
+            <div id="capture-content" class="hidden">
+                <div class="capture-header">
+                    <h2 id="capture-url"></h2>
+                    <p id="capture-time" class="meta"></p>
+                </div>
+
+                <div class="screenshot-container">
+                    <img id="screenshot" alt="Page screenshot">
+                </div>
+
+                <div class="capture-details">
+                    <div class="detail-section">
+                        <h3>Capture Information</h3>
+                        <table class="info-table">
+                            <tr>
+                                <td>Capture ID</td>
+                                <td id="capture-id" class="mono"></td>
+                            </tr>
+                            <tr>
+                                <td>Original URL</td>
+                                <td id="original-url"></td>
+                            </tr>
+                            <tr>
+                                <td>Final URL</td>
+                                <td id="final-url"></td>
+                            </tr>
+                            <tr>
+                                <td>Captured At</td>
+                                <td id="captured-at"></td>
+                            </tr>
+                            <tr>
+                                <td>Browser</td>
+                                <td id="browser-info"></td>
+                            </tr>
+                            <tr>
+                                <td>Viewport</td>
+                                <td id="viewport-info"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Cryptographic Hashes</h3>
+                        <table class="info-table">
+                            <tr>
+                                <td>Screenshot SHA-256</td>
+                                <td id="hash-screenshot" class="mono"></td>
+                            </tr>
+                            <tr>
+                                <td>DOM SHA-256</td>
+                                <td id="hash-dom" class="mono"></td>
+                            </tr>
+                            <tr>
+                                <td>Manifest SHA-256</td>
+                                <td id="hash-manifest" class="mono"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3>Event Chain Proof</h3>
+                        <table class="info-table">
+                            <tr>
+                                <td>Event ID</td>
+                                <td id="event-id" class="mono"></td>
+                            </tr>
+                            <tr>
+                                <td>Event Hash</td>
+                                <td id="event-hash" class="mono"></td>
+                            </tr>
+                            <tr>
+                                <td>Previous Event Hash</td>
+                                <td id="prev-hash" class="mono"></td>
+                            </tr>
+                            <tr>
+                                <td>Operator Key ID</td>
+                                <td id="operator-key" class="mono"></td>
+                            </tr>
+                            <tr>
+                                <td>Signature</td>
+                                <td id="signature" class="mono truncate"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="detail-section verification">
+                        <h3>Verification</h3>
+                        <div id="verification-status" class="verification-pending">
+                            <span class="status-icon"></span>
+                            <span class="status-text">Verifying...</span>
+                        </div>
+                        <button id="verify-btn" class="btn btn-secondary">Re-verify Integrity</button>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <a id="download-bundle" href="#" class="btn btn-primary">Download Evidence Bundle</a>
+                    <a id="view-dom" href="#" class="btn btn-secondary" target="_blank">View DOM</a>
+                    <a id="view-manifest" href="#" class="btn btn-secondary" target="_blank">View Manifest</a>
+                </div>
+            </div>
+
+            <div id="error" class="hidden">
+                <h2>Capture Not Found</h2>
+                <p>The requested capture could not be found.</p>
+                <a href="/" class="btn btn-primary">Go Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Intrace - Open source verifiable web capture system</p>
+            <p><a href="https://github.com/intraceai">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/capture.js"></script>
+    <script src="js/verify.js"></script>
+</body>
+</html>
