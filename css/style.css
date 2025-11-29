@@ -59,7 +59,7 @@ body {
 
 /* Layout */
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -282,11 +282,9 @@ main {
 
 #browser-canvas {
     width: 100%;
-    max-width: 1280px;
     height: auto;
     display: block;
     cursor: default;
-    margin: 0 auto;
 }
 
 #connection-status {
@@ -508,13 +506,19 @@ footer {
     font-size: 0.75rem;
 }
 
+footer .container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
 footer a {
-    color: var(--foreground);
+    color: var(--muted-foreground);
     text-decoration: none;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    color: var(--foreground);
 }
 
 /* Responsive */

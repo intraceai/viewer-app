@@ -6,11 +6,13 @@ COPY index.html /usr/share/nginx/html/
 COPY capture.html /usr/share/nginx/html/
 COPY css/ /usr/share/nginx/html/css/
 COPY js/ /usr/share/nginx/html/js/
+COPY images/ /usr/share/nginx/html/images/
 
 RUN chmod -R 644 /usr/share/nginx/html/*.html && \
-    chmod -R 755 /usr/share/nginx/html/css /usr/share/nginx/html/js && \
+    chmod -R 755 /usr/share/nginx/html/css /usr/share/nginx/html/js /usr/share/nginx/html/images && \
     find /usr/share/nginx/html/css -type f -exec chmod 644 {} \; && \
-    find /usr/share/nginx/html/js -type f -exec chmod 644 {} \;
+    find /usr/share/nginx/html/js -type f -exec chmod 644 {} \; && \
+    find /usr/share/nginx/html/images -type f -exec chmod 644 {} \;
 
 EXPOSE 80
 
