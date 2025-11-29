@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerInterval = null;
     let ws = null;
     let frameImage = new Image();
+    let lastMouseMove = 0;
+    let lastScroll = 0;
+    const MOUSE_THROTTLE_MS = 50;
+    const SCROLL_THROTTLE_MS = 32; // ~30 scroll events/sec max
 
     loadRecentCaptures();
 
@@ -120,8 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Mouse event handlers
+    // Mouse event handlers (throttled to prevent flooding)
     browserCanvas.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastMouseMove < MOUSE_THROTTLE_MS) return;
+        lastMouseMove = now;
         const coords = getCanvasCoordinates(e);
         sendInput({ type: 'mousemove', x: coords.x, y: coords.y });
     });
@@ -144,6 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     browserCanvas.addEventListener('wheel', (e) => {
         e.preventDefault();
+        const now = Date.now();
+        if (now - lastScroll < SCROLL_THROTTLE_MS) return;
+        lastScroll = now;
         const coords = getCanvasCoordinates(e);
         sendInput({
             type: 'wheel',
